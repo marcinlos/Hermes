@@ -51,6 +51,7 @@ public class AncestorsIterator implements Iterator<Class<?>> {
     private void push(Class<?> clazz) {
         if (clazz != null && ! visited.contains(clazz)) {
             queue.offer(clazz);
+            visited.add(clazz);
         }
     }
 

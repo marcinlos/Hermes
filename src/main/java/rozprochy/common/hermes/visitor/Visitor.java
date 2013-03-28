@@ -23,11 +23,6 @@ public class Visitor<T> {
         return new AfterMatch<U>(clazz);
     }
     
-    public Visitor<T> use(Object o) {
-        
-        return this;
-    }
-    
     public <U> T visit(U object) {
         Class<?> key = object.getClass();
         @SuppressWarnings("unchecked")
