@@ -1,4 +1,4 @@
-package rozprochy.common.hermes;
+package rozprochy.common.hermes.parsing;
 
 public class ParseException extends Exception {
 

@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+import rozprochy.common.hermes.parsing.ParseException;
+
 /**
  * Class for creating command line interfaces.
  */

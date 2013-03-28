@@ -2,6 +2,8 @@ package rozprochy.common.hermes;
 
 import java.util.Scanner;
 
+import rozprochy.common.hermes.parsing.ParseException;
+
 /**
  * Class responsible for transforming the raw input lines into structured,
  * easy to use parameter description. 

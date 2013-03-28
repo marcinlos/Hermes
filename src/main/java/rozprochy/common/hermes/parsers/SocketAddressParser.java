@@ -2,8 +2,8 @@ package rozprochy.common.hermes.parsers;
 
 import java.net.InetSocketAddress;
 
-import rozprochy.common.hermes.ParseException;
-import rozprochy.common.hermes.ValueParser;
+import rozprochy.common.hermes.parsing.ParseException;
+import rozprochy.common.hermes.parsing.ValueParser;
 
 /**
  * Parses transport layer TCP/UDP addresses of the form {@code host:port}, e.g.

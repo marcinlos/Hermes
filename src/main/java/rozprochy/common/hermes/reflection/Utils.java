@@ -1,4 +1,4 @@
-package rozprochy.common.hermes.impl;
+package rozprochy.common.hermes.reflection;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -10,9 +10,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-class ReflectionHelper {
+public class Utils {
 
-    private ReflectionHelper() { }
+    private Utils() { }
 
     public static Collection<Class<?>> getSupertypes(Class<?> clazz) {
         Set<Class<?>> supers = new HashSet<Class<?>>();

@@ -4,7 +4,8 @@ import java.util.List;
 
 
 /**
- * Commmon interface for all the commands. Used by the 
+ * Commmon interface for all the commands. Used by the {@linkplain Interpreter}
+ * to dispatch command invocations.
  * 
  * @author los
  */

@@ -5,10 +5,10 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import rozprochy.common.hermes.parsing.ValueParser;
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
-public @interface Param {
-    
-    String[] names();
-    
+public @interface ParseWith {
+    Class<? extends ValueParser<?>> value();
 }

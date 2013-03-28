@@ -3,8 +3,8 @@ package rozprochy.common.hermes.parsers;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-import rozprochy.common.hermes.ParseException;
-import rozprochy.common.hermes.ValueParser;
+import rozprochy.common.hermes.parsing.ParseException;
+import rozprochy.common.hermes.parsing.ValueParser;
 
 public class InetAddressParser implements ValueParser<InetAddress> {
 

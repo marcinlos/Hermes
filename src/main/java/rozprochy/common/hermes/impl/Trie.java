@@ -1,4 +1,4 @@
-package rozprochy.common.hermes;
+package rozprochy.common.hermes.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
