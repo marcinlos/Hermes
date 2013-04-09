@@ -1,7 +1,9 @@
 package rozprochy.common.hermes.visitor;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Date;
+
+import rozprochy.common.hermes.util.HashPosetMap;
+import rozprochy.common.hermes.util.PosetMap;
 
 /**
  * Generic class providing some simple visitor/pattern-matching like 
@@ -13,11 +15,9 @@ import java.util.Map;
  */
 public class Visitor<T> {
     
-    private Map<Class<?>, Function<T, ?>> actions = 
-            new HashMap<Class<?>, Function<T, ?>>();
+    private PosetMap<Class<?>, Function<T, ?>> actions =
+            new HashPosetMap<Class<?>, Function<T,?>>(ClassPosetOrder.INSTANCE);
 
-    public Visitor() {
-    }
     
     public <U> AfterMatch<U> with(Class<U> clazz) {
         return new AfterMatch<U>(clazz);
@@ -27,11 +27,9 @@ public class Visitor<T> {
         Class<?> key = object.getClass();
         @SuppressWarnings("unchecked")
         Function<T, ? super U> action = (Function<T, ? super U>) actions
-                .get(key);
+                .getAny(key);
         return action.visit(object);
     }
-    
-    //private
     
     /**
      * Helper object returned by {@linkplain Visitor#visit(Object)} as a part
@@ -81,9 +79,16 @@ public class Visitor<T> {
                 public void visit(Integer value) {
                     System.out.println("Integer: " + value);
                 }
+            })
+            .with(Object.class).use(new Action<Object>() {
+                @Override
+                public void visit(Object item) {
+                    System.out.println("Object: " + item);
+                }
             });
         matcher.visit("Meeh");
         matcher.visit(3);
+        matcher.visit(new Date());
     }
 
 }

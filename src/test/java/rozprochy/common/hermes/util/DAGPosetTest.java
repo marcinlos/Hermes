@@ -1,6 +1,8 @@
 package rozprochy.common.hermes.util;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -34,10 +36,12 @@ public class DAGPosetTest {
                 Set<Character> s1 = toSet(t1);
                 Set<Character> s2 = toSet(t2);
                 
-                if (s1.containsAll(s2)) {
-                    return Compare.LT;
-                } else if (s2.containsAll(s1)) {
+                if (s1.equals(s2)) {
+                    return Compare.EQ;
+                } else if (s1.containsAll(s2)) {
                     return Compare.GT;
+                } else if (s2.containsAll(s1)) {
+                    return Compare.LT;
                 } else {
                     return Compare.NON_CMP;
                 }
@@ -60,6 +64,18 @@ public class DAGPosetTest {
         for (String s: strings) {
             assertTrue("'" + s + "' not there", poset.contains(s));
         }
+    }
+    
+    @Test
+    public void contains_NonexistantElement_ReturnsFalse() {
+        assertFalse(poset.contains("abcd"));
+    }
+    
+    @Test
+    public void glb_CDEF_ReturnsDEandDF() {
+        System.out.println(poset);
+        assertEquals(new HashSet<String>(Arrays.asList("de", "df")),
+                poset.greatestLowerBound("ddefgh"));
     }
 
 }

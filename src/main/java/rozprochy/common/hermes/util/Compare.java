@@ -13,6 +13,9 @@ public enum Compare {
     /** Greater than */
     GT,
     
+    /** Equal */
+    EQ,
+    
     /** Non-comparable */
     NON_CMP
 }

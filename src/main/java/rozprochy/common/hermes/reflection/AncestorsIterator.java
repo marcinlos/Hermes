@@ -22,16 +22,27 @@ public class AncestorsIterator implements Iterator<Class<?>> {
     
     /** To prevent visiting a node (e.g. an interface) multiple times */
     private Set<Class<?>> visited = new HashSet<Class<?>>();
-    
+
+    /**
+     * Creates an iterator walking up the class tree beginning at {@code clazz}.
+     * 
+     * @param clazz Starting point
+     */
     public AncestorsIterator(Class<?> clazz) {
         queue.offer(clazz);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean hasNext() {
         return ! queue.isEmpty();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Class<?> next() {
         Class<?> clazz = queue.removeFirst();

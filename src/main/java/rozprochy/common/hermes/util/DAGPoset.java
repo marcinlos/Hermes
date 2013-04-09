@@ -2,6 +2,7 @@ package rozprochy.common.hermes.util;
 
 import java.util.ArrayDeque;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Queue;
@@ -31,8 +32,7 @@ public class DAGPoset<T> implements Poset<T> {
      */
     @Override
     public Iterator<T> iterator() {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException("Sorry :/");
     }
 
     /**
@@ -104,9 +104,10 @@ public class DAGPoset<T> implements Poset<T> {
         
         while (! nodes.isEmpty()) {
             Node<T> node = nodes.remove();
-            if (node.item.equals(e)) {
+            Compare res = comp.compare(node.item, e);
+            if (res == Compare.EQ) {
                 return true;
-            } else if (comp.compare(node.item, e) == Compare.LT) {
+            } else if (res == Compare.LT) {
                 // if the node is smaller than e, examin its children
                 for (Node<T> child: node.children()) {
                     if (! visited.contains(child)) {
@@ -136,8 +137,7 @@ public class DAGPoset<T> implements Poset<T> {
      */
     @Override
     public Collection<T> immediatePredecessors(T e) {
-        // TODO Auto-generated method stub
-        return null;
+        throw new UnsupportedOperationException("Sorry :/");
     }
 
     /**
@@ -145,8 +145,39 @@ public class DAGPoset<T> implements Poset<T> {
      */
     @Override
     public Collection<T> greatestLowerBound(T e) {
-        // TODO Auto-generated method stub
-        return null;
+
+        return greatestLowerBound(e, root);
+    }
+    
+    private Collection<T> greatestLowerBound(T e, Set<Node<T>> nodes) {
+        Set<Node<T>> visited = new HashSet<Node<T>>();
+        Queue<Node<T>> queue = new ArrayDeque<Node<T>>(root);
+        Set<T> glb = new HashSet<T>();
+        while (! queue.isEmpty()) {
+            Node<T> node = queue.remove();
+            Compare result = comp.compare(node.item, e);
+            if (result == Compare.EQ) {
+                return Collections.singleton(e);
+            } 
+            if (result == Compare.LT) {
+                boolean add = true;
+                for (Node<T> child: node.children()) {
+                    // sought node lays between node and child, node is
+                    // in the GLB set
+                    if (comp.compare(child.item, e) == Compare.LT) {
+                        add = false;
+                    }
+                    if (! visited.contains(child)) {
+                        queue.offer(child);
+                        visited.add(child);
+                    }
+                }
+                if (add) {
+                    glb.add(node.item);
+                }
+            }
+        }
+        return glb;
     }
 
     /**
@@ -157,11 +188,12 @@ public class DAGPoset<T> implements Poset<T> {
         return comp;
     }
     
+    
     private static class Node<T> {
-        T item;
-        Set<Node<T>> children;
+        private T item;
+        private Set<Node<T>> children;
         
-        Node(T item) {
+        private Node(T item) {
             this.item = item;
         }
         
@@ -200,10 +232,10 @@ public class DAGPoset<T> implements Poset<T> {
     
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        Queue<Node<T>> nodes = new ArrayDeque<Node<T>>();
+        StringBuilder sb = new StringBuilder("DAGPoset {\n");
+        Queue<Node<T>> nodes = new ArrayDeque<Node<T>>(root);
         Set<Node<T>> visited = new HashSet<Node<T>>();
-        nodes.addAll(root);
+        
         while (! nodes.isEmpty()) {
             Node<T> n = nodes.remove();
             sb.append(n).append('\n');
@@ -214,34 +246,7 @@ public class DAGPoset<T> implements Poset<T> {
                 }
             }
         }
-        return sb.toString();
+        return sb.append("}").toString();
     }
     
-    public static void main(String[] args) {
-        PosetOrder<String> order = new PosetOrder<String>() {
-            @Override
-            public Compare compare(String t1, String t2) {
-                if (t1.contains(t2)) {
-                    return Compare.LT;
-                } else if (t2.contains(t1)) {
-                    return Compare.GT;
-                } else {
-                    return Compare.NON_CMP;
-                }
-            }
-        };
-        
-        Poset<String> set = new DAGPoset<String>(order);
-        
-        for (String s: new String[]{
-                "kra","pi", "dup", "kra","dupi", "k", "kra", 
-                "ków", "kraków", "kra","krakówwa"
-        }) {
-            set.add(s);
-        }
-        System.out.println("Set contents:");
-        System.out.println(set);
-        System.out.println("(end)");
-        System.out.println(set.contains("dupi"));
-    }
 }
