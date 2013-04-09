@@ -1,4 +1,4 @@
-package rozprochy.common.hermes.util;
+package rozprochy.common.hermes.util.poset;
 
 public interface PosetComparable<T> {
     

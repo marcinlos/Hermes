@@ -2,8 +2,8 @@ package rozprochy.common.hermes.visitor;
 
 import java.util.Date;
 
-import rozprochy.common.hermes.util.HashPosetMap;
-import rozprochy.common.hermes.util.PosetMap;
+import rozprochy.common.hermes.util.poset.HashPosetMap;
+import rozprochy.common.hermes.util.poset.PosetMap;
 
 /**
  * Generic class providing some simple visitor/pattern-matching like 

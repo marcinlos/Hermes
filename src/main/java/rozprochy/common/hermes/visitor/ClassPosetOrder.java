@@ -1,7 +1,7 @@
 package rozprochy.common.hermes.visitor;
 
-import rozprochy.common.hermes.util.Compare;
-import rozprochy.common.hermes.util.PosetOrder;
+import rozprochy.common.hermes.util.poset.Compare;
+import rozprochy.common.hermes.util.poset.PosetOrder;
 
 /**
  * Class poset comparator. "Less" (earlier in the poset graph) has 

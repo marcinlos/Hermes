@@ -1,4 +1,4 @@
-package rozprochy.common.hermes.util;
+package rozprochy.common.hermes.util.poset;
 
 /**
  * Interface of a comparator defining a poset. 

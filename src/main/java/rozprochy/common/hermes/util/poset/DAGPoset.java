@@ -1,4 +1,4 @@
-package rozprochy.common.hermes.util;
+package rozprochy.common.hermes.util.poset;
 
 import java.util.ArrayDeque;
 import java.util.Collection;

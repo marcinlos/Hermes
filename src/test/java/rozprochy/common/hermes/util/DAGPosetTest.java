@@ -13,6 +13,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import rozprochy.common.hermes.util.poset.Compare;
+import rozprochy.common.hermes.util.poset.DAGPoset;
+import rozprochy.common.hermes.util.poset.PosetOrder;
+
 public class DAGPosetTest {
     
     private static PosetOrder<String> order;
