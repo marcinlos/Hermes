@@ -17,8 +17,12 @@ import rozprochy.common.hermes.util.poset.PosetOrder;
  */
 public class ClassPosetOrder implements PosetOrder<Class<?>> {
     
+    /** Globally accessible instance */
     public static final ClassPosetOrder INSTANCE = new ClassPosetOrder();
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Compare compare(Class<?> t1, Class<?> t2) {
         if (t1.equals(t2)) {

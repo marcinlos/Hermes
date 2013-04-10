@@ -9,19 +9,24 @@ class MethodWrapper<R> implements Function<R, Object> {
 
     private Object object;
     private Method method;
+    private Class<R> clazz;
     
-    public MethodWrapper(Object object, Method method) {
+    public MethodWrapper(Object object, Method method, Class<R> clazz) {
         this.object = object;
         this.method = method;
         method.setAccessible(true);
+    }
+    
+    public static <T> MethodWrapper<T> make(Object object, Method method, 
+            Class<T> clazz) { 
+        return new MethodWrapper<T>(object, method, clazz); 
     }
 
     @Override
     public R visit(Object item) {
         try {
-            @SuppressWarnings("unchecked")
-            R value = (R) method.invoke(object, item);
-            return value;
+            Object value = method.invoke(object, item);
+            return clazz.cast(value);
         } catch (IllegalArgumentException e) {
             throw new InvocationException(e);
         } catch (IllegalAccessException e) {
