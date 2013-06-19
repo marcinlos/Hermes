@@ -2,38 +2,12 @@ package rozprochy.common.hermes.example;
 
 import java.io.IOException;
 
-import rozprochy.common.hermes.CLI;
-import rozprochy.common.hermes.CommandException;
-import rozprochy.common.hermes.InputSource;
-import rozprochy.common.hermes.annotations.Command;
-import rozprochy.common.hermes.annotations.Description;
-import rozprochy.common.hermes.parsing.ParseException;
-
-
-
-
-
- class BoolTest 
-{
-    public static void main(String [] args) 
-    {
-        Boolean b1 = new Boolean("false");
-        boolean b2;
-        b2 = b1.booleanValue();
-        if (!b2) 
-        {
-            b2 = true;
-            System.out.print("x ");
-        }
-        if (b1 & b2) /* Line 13 */
-        {
-            System.out.print("y ");
-        }
-        System.out.println("z");
-    }
-}
-
-
+import mlos.hermes.CLI;
+import mlos.hermes.CommandException;
+import mlos.hermes.InputSource;
+import mlos.hermes.annotations.Command;
+import mlos.hermes.annotations.Description;
+import mlos.hermes.parsing.ParseException;
 
 
 interface IFoo {

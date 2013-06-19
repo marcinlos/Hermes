@@ -1,10 +1,10 @@
 package rozprochy.common.hermes.example;
 
-import rozprochy.common.hermes.CLI;
-import rozprochy.common.hermes.InputSource;
-import rozprochy.common.hermes.Interpreter;
-import rozprochy.common.hermes.annotations.Command;
-import rozprochy.common.hermes.annotations.Description;
+import mlos.hermes.CLI;
+import mlos.hermes.InputSource;
+import mlos.hermes.Interpreter;
+import mlos.hermes.annotations.Command;
+import mlos.hermes.annotations.Description;
 
 public class NoArgs {
 

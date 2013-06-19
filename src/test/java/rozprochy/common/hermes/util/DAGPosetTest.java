@@ -9,13 +9,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import mlos.hermes.util.poset.Compare;
+import mlos.hermes.util.poset.DAGPoset;
+import mlos.hermes.util.poset.PosetOrder;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import rozprochy.common.hermes.util.poset.Compare;
-import rozprochy.common.hermes.util.poset.DAGPoset;
-import rozprochy.common.hermes.util.poset.PosetOrder;
 
 public class DAGPosetTest {
     
